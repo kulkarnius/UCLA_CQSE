@@ -1,0 +1,92 @@
+<?xml version="1.0" standalone="no" ?>
+<!-- QLayeredDevice Parameters -->
+<QLayeredDevice_ParameterList>
+
+
+<RunParameters>
+<threadCount value = "4" />
+</RunParameters>
+
+
+<GateBias> <!--  bias in eV  -->
+<topBias     value="0.0" type="double" /> 
+<botBias     value="0.0" type="double" />  
+</GateBias>
+
+<!--                                                         -->
+<!--                                                         -->
+<!-- Effective mass values are directionally dependent       -->
+<!-- z-coordinate is the "vertical" coordinate               --> 
+<!--                                                         -->
+<MaterialList>
+<Material>
+<name value = "A" />
+<dielectricConstant value      = "1.0" />
+<effectiveMass_x value         = "1.0" />
+<effectiveMass_y value         = "1.0" />
+<effectiveMass_z value         = "1.0" />
+<bandShift       value         = "0.0" /> 
+<backgroundDopingDensity value = "0.00" /> 
+</Material>
+
+<Material>
+<name value = "B" />
+<dielectricConstant value      = "2.0" />
+<effectiveMass_x value         = "2.0" />
+<effectiveMass_y value         = "2.0" />
+<effectiveMass_z value         = "2.0" />
+<bandShift       value         = "0.0" /> 
+<backgroundDopingDensity value = "0.00" /> 
+</Material>
+
+</MaterialList>
+
+<LayeredStructure>
+<baseLocation value = "0.0" />
+<Layer>
+	    <name                 value = "Layer"   />
+	    <materialType         value = "A"       />
+		<height               value = "1.0"      /> 
+		<panelDensity         value = "10.0"       />
+		<localWaveCalcType    value = "none"      />
+</Layer>
+
+<Layer>
+	    <name                 value = "Layer"   />
+	    <materialType         value = "A"  />
+		<height               value = "2.0"      /> 
+		<panelDensity         value = "10.0"      />
+        <localWaveCalcType    value = "none"      />
+</Layer>
+
+<Layer>
+	    <name                 value = "Layer"    />
+	    <materialType         value = "A"  />
+		<height               value = "2.0"        /> 
+		<panelDensity         value = "20.0"        />
+	    <localWaveCalcType    value = "classical"  />
+</Layer>
+
+
+<Layer>
+	    <name                 value = "Layer"    />
+	    <materialType         value = "A"  />
+		<height               value = "1.0"        /> 
+		<panelDensity         value = "20.0"        />
+	    <localWaveCalcType    value = "classical"  />
+</Layer>
+
+
+<Layer>
+	    <name                 value = "Layer"    />
+	    <materialType         value = "A"  />
+		<height               value = "2.0"        /> 
+		<panelDensity         value = "20.0"        />
+	    <localWaveCalcType    value = "classical"  />
+</Layer>
+
+
+</LayeredStructure>
+
+
+</QLayeredDevice_ParameterList>
