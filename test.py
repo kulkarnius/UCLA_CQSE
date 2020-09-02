@@ -7,11 +7,14 @@ root = tree.getroot()
 def getParameterList(parameterListName):
     parameterList = tree.find(parameterListName)
 
+    if tree.find(parameterListName) == None:
+        raise Exception("Don't be dumb")
+
     parameters = []
 
     for child in parameterList:
-        parameters.append(child)
+        parameters.append(child.tag)
 
     return parameterList, parameters
 
-getParameterList("Material List")
+print(getParameterList("MaterialList"))
