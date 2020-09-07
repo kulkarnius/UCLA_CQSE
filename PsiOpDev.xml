@@ -44,7 +44,7 @@
 <LayeredStructure>
 <baseLocation value = "0.0" />
 <Layer>
-	    <name                 value = "Layer"   />
+	    <name                 value = "Layer1"   />
 	    <materialType         value = "A"       />
 		<height               value = "1.0"      /> 
 		<panelDensity         value = "10.0"       />
@@ -52,7 +52,7 @@
 </Layer>
 
 <Layer>
-	    <name                 value = "Layer"   />
+	    <name                 value = "Layer2"   />
 	    <materialType         value = "A"  />
 		<height               value = "2.0"      /> 
 		<panelDensity         value = "10.0"      />
@@ -60,7 +60,7 @@
 </Layer>
 
 <Layer>
-	    <name                 value = "Layer"    />
+	    <name                 value = "Layer3"    />
 	    <materialType         value = "A"  />
 		<height               value = "2.0"        /> 
 		<panelDensity         value = "20.0"        />
@@ -69,7 +69,7 @@
 
 
 <Layer>
-	    <name                 value = "Layer"    />
+	    <name                 value = "Layer4"    />
 	    <materialType         value = "A"  />
 		<height               value = "1.0"        /> 
 		<panelDensity         value = "20.0"        />
@@ -78,7 +78,7 @@
 
 
 <Layer>
-	    <name                 value = "Layer"    />
+	    <name                 value = "Layer5"    />
 	    <materialType         value = "A"  />
 		<height               value = "2.0"        /> 
 		<panelDensity         value = "20.0"        />
