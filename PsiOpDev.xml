@@ -7,6 +7,20 @@
 <threadCount value = "4" />
 </RunParameters>
 
+<BiasSweepParameters>
+<topBias>
+<min value="0.0" type="double"/> 
+<max value="1.0" type="double"/> 
+<increment value = "0.25" type="double"/>
+</topBias>
+
+<botBias>
+<min value="0.0" type="double"/> 
+<max value="1.0" type="double"/> 
+<increment value = "0.25" type="double"/>
+</botBias>
+</BiasSweepParameters>
+
 
 <GateBias> <!--  bias in eV  -->
 <topBias     value="0.0" type="double" /> 
