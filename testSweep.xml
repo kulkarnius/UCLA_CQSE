@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no" ?>
+<runParameters>
+<paramA value = 'default_value' type= 'default_type'/>
+</runParameters>
+
+<parameterSweeps>
+<paramA>
+<min value ='0.0'/>
+<max value ='1.0'/>
+<increment value = '0.2'/>
+</paramA>
+</parameterSweeps>
