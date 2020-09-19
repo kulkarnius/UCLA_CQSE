@@ -18,6 +18,10 @@ def truncate(number):
     factor = 10.0 ** 2
     return math.trunc(number * factor) / factor
 
+def nestedLoops(array):
+    return list(it.product(*array))
+
+
 class xml_parser:
     def __init__(self, fileName):
         self.tree = ET.parse(fileName)
@@ -31,7 +35,6 @@ class xml_parser:
 
     def getParent(self, valueName):
         return [elem.tag for elem in self.root.findall(".//{}/..".format(valueName))]
-    
 
     def writeToFile(self, outputFilePath):
         self.tree.write(outputFilePath)

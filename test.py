@@ -7,6 +7,9 @@ def generateSweeps(subDirectoryName):
     mins = sweepFile.getValues("min")
     maxs = sweepFile.getValues("max")
     incres = sweepFile.getValues("increment")
+    parents = sweepFile.getParent("min")
+
+    vals = [mins, maxs, incres]
     
 
     if xm.subDirectoryExistence(subDirectoryName) != True: #Checks to see if Directory exists
@@ -18,6 +21,7 @@ def generateSweeps(subDirectoryName):
     Hierachy of Checks:
         Check for Links
         Check for Multiple Nested Loops
+        Check for Single Nested Loops
     """
 
     if len(mins) == 1: #The case for single sweeps.
@@ -26,10 +30,8 @@ def generateSweeps(subDirectoryName):
             templateFile.setValue("paramA",value)
             templateFile.writeToFile('{}/output{}.xml'.format(subDirectoryName, str(n)))
     elif len(mins) > 1:
-        
- 
-
-parents = sweepFile.getParent("min")
-print(parents)
+        for i in range(len(mins)):
+            values = [xm.truncate(mins[0] + n*incres[0])]
 
 
+print(xm.nestedLoops()
