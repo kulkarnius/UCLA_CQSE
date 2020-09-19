@@ -1,6 +1,10 @@
 <?xml version="1.0" standalone="no" ?>
+
+<testCaseParameters>
+
 <runParameters>
-<paramA value = 'default_value' type= 'default_type'/>
+<paramA value = 'default_value' type ='default_type'/>
+<paramB value = 'default_value' type = 'default_type'/>
 </runParameters>
 
 <parameterSweeps>
@@ -9,4 +13,13 @@
 <max value ='1.0'/>
 <increment value = '0.2'/>
 </paramA>
+<paramB>
+<min value ='0.0'/>
+<max value ='1.0'/>
+<increment value = '0.25'/>
+</paramB>
 </parameterSweeps>
+
+
+
+</testCaseParameters>
