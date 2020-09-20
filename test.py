@@ -35,13 +35,11 @@ def generateSweeps(subDirectoryName):
         lmins = sweepFile.getValues("link//min")
         lmaxs = sweepFile.getValues("link//max")
         lincres = sweepFile.getValues("link//increment")
-        lparents = sweepFile.getParent("link//min")
-
+        
         lsweeps = [[xm.truncate(lmins[i] + n*lincres[i]) for n in range(1 + int((lmaxs[i]-lmins[i])/lincres[i]))] for i in range(len(lmins))]
-        lcombinations = xm.zip_longest(lsweeps[0], lsweeps[1])
+        lcombinations = [[i,j] for i,j in zip(lsweeps[0], lsweeps[1])] 
 
         uLinkedParams = xm.getTags(sweepFile.getChilds("parameterSweeps"))
-        parameterNumber = len(uLinkedParams)
         uLinkedParams.remove("link")
 
         mins = xm.chaining([sweepFile.getValues("{}//min".format(name)) for name in uLinkedParams])
@@ -49,16 +47,17 @@ def generateSweeps(subDirectoryName):
         incres = xm.chaining([sweepFile.getValues("{}//increment".format(name)) for name in uLinkedParams])
         
         ulsweeps = [[xm.truncate(mins[i] + n*incres[i]) for n in range(1 + int((maxs[i]-mins[i])/incres[i]))] for i in range(len(mins))]
-        ulcombinations = xm.nestedLoops(ulsweeps)
+        ulcombinations = [list(i) for i in xm.nestedLoops(ulsweeps)]
 
-        combinations = xm.nestedLoops([lcombinations, ulcombinations])
+        tuples = list(xm.nestedLoops([lcombinations, ulcombinations]))
+
+        combinations = [tuples[i][0] + tuples[i][1] for i in range(len(tuples))]
 
         for i in range(len(combinations)):
             for j in range(len(parents)):
                 templateFile.setValue(parents[j],combinations[i][j])  #Need to add valid path checking to here at some point
             templateFile.writeToFile('{}/output{}{}.xml'.format(subDirectoryName, str(i),str(j)))
 
-    
 
-generateSweeps("cheesebruger")
+generateSweeps("cheeseman")
 
