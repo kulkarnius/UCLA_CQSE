@@ -38,9 +38,7 @@ def generateSweeps(subDirectoryName):
         lparents = sweepFile.getParent("link//min")
 
         lsweeps = [[xm.truncate(lmins[i] + n*lincres[i]) for n in range(1 + int((lmaxs[i]-lmins[i])/lincres[i]))] for i in range(len(lmins))]
-        lcombinations = zip(*lsweeps)
-
-        if length of 
+        lcombinations = xm.zip_longest(lsweeps[0], lsweeps[1])
 
         uLinkedParams = xm.getTags(sweepFile.getChilds("parameterSweeps"))
         parameterNumber = len(uLinkedParams)
@@ -53,18 +51,14 @@ def generateSweeps(subDirectoryName):
         ulsweeps = [[xm.truncate(mins[i] + n*incres[i]) for n in range(1 + int((maxs[i]-mins[i])/incres[i]))] for i in range(len(mins))]
         ulcombinations = xm.nestedLoops(ulsweeps)
 
-        
+        combinations = xm.nestedLoops([lcombinations, ulcombinations])
 
-        print(lsweeps, lcombinations)
-
-
-        """
-        for i in range(len()):
+        for i in range(len(combinations)):
             for j in range(len(parents)):
                 templateFile.setValue(parents[j],combinations[i][j])  #Need to add valid path checking to here at some point
             templateFile.writeToFile('{}/output{}{}.xml'.format(subDirectoryName, str(i),str(j)))
 
-"""
+    
 
-generateSweeps("cheese")
+generateSweeps("cheesebruger")
 

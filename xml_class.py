@@ -27,6 +27,10 @@ def getTags(elements):
 def chaining(iterable):
     return list(it.chain.from_iterable(iterable))
 
+def zip_longest(listA, listB):
+    return it.zip_longest(listA, listB)
+
+
 
 class xml_parser:
     def __init__(self, fileName):
