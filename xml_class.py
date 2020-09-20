@@ -21,6 +21,12 @@ def truncate(number):
 def nestedLoops(array):
     return list(it.product(*array))
 
+def getTags(elements):
+        return [elem.tag for elem in elements]
+
+def chaining(iterable):
+    return list(it.chain.from_iterable(iterable))
+
 
 class xml_parser:
     def __init__(self, fileName):
@@ -40,8 +46,15 @@ class xml_parser:
         self.tree.write(outputFilePath)
     
     def getRunParameters(self):
-        return [elem.tag for elem in self.root.findall('.//runParameters/*')]
+        return self.root.findall('.//runParameters/*')
+    
+    def doesItExist(self, parameterName):
+        return self.root.findall(".//{}".format(parameterName))
 
+    def getChilds(self, parameterName):
+        return self.root.findall(".//{}/*".format(parameterName))
+    
+    
 
     
 

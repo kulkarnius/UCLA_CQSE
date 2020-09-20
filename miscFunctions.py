@@ -52,3 +52,10 @@ def biasSweep(self):
         if self.root.iter(parameterList) == None:
             raise Exception("Not a valid parameterName", parameterList)
         return childrenTags
+    
+    if len(mins) == 1: #The case for single sweeps.
+        for n in range(1 + int((maxs[0]-mins[0])/incres[0])):
+            value = xm.truncate(mins[0] + n*incres[0])
+            templateFile.setValue("paramA",value)
+            templateFile.writeToFile('{}/output{}.xml'.format(subDirectoryName, str(n)))
+    elif len(mins) > 1:

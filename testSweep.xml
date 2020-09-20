@@ -4,10 +4,12 @@
 
 <runParameters>
 <paramA value = 'default_value' type ='default_type'/>
-<paramB value = 'default_value' type = 'default_type'/>
+<paramB value = 'default_value' type ='default_type'/>
+<paramC value = 'default_value' type ='default_type'/>
 </runParameters>
 
 <parameterSweeps>
+<link>
 <paramA>
 <min value ='0.0'/>
 <max value ='1.0'/>
@@ -16,8 +18,15 @@
 <paramB>
 <min value ='0.0'/>
 <max value ='1.0'/>
-<increment value = '0.25'/>
+<increment value = '0.2'/>
 </paramB>
+</link>
+
+<paramC>
+<min value ='0.0'/>
+<max value ='1.0'/>
+<increment value = '0.2'/>
+</paramC>
 </parameterSweeps>
 
 
