@@ -9,7 +9,7 @@
 </runParameters>
 
 <parameterSweeps>
-<link>
+
 <paramA>
 <min value ='0.0'/>
 <max value ='1.0'/>
@@ -20,13 +20,7 @@
 <max value ='1.0'/>
 <increment value = '0.2'/>
 </paramB>
-</link>
 
-<paramC>
-<min value ='0.0'/>
-<max value ='1.0'/>
-<increment value = '0.2'/>
-</paramC>
 </parameterSweeps>
 
 
