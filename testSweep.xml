@@ -3,9 +3,8 @@
 <testCaseParameters>
 
 <runParameters>
-<paramA value = 'default_value' type ='default_type'/>
-<paramB value = 'default_value' type ='default_type'/>
-<paramC value = 'default_value' type ='default_type'/>
+<paramA value = 'default_value' type ='double'/>
+<paramB value = 'default_value' type ='bool'/>
 </runParameters>
 
 <parameterSweeps>
@@ -16,9 +15,7 @@
 <increment value = '0.2'/>
 </paramA>
 <paramB>
-<min value ='0.0'/>
-<max value ='1.0'/>
-<increment value = '0.2'/>
+<boolSweep/>
 </paramB>
 
 </parameterSweeps>

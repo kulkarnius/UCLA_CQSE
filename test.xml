@@ -3,5 +3,4 @@
 <testParameters>
 <paramA     value = "1.0"/>
 <paramB     value = "1.0"/>
-<paramC     value = "1.0"/>
 </testParameters>

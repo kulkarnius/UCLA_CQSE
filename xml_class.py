@@ -59,8 +59,8 @@ class xml_parser:
         return self.root.findall(".//{}/*".format(parameterName))
     
     def getType(self, parameterName):
-        typeVal = self.root.find(".//runParameters/{}".format(parameterName)).get("type")
-        
+        return self.root.find(".//runParameters/{}".format(parameterName)).get("type")
+
 
     
     

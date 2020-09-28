@@ -21,6 +21,7 @@ def generateSweeps(subDirectoryName):
     parents = []
     parentsInc = sweepFile.getParent("increment") #Checking for both increments
     parentsInt = sweepFile.getParent("intervals") #And intervals
+    parentsBool = sweepFile.getParent("boolSweep") #And boolean values
 
     minsInc = xm.chaining([sweepFile.getValues("{}//min".format(parentName)) for parentName in parentsInc])
     maxsInc = xm.chaining([sweepFile.getValues("{}//max".format(parentName)) for parentName in parentsInc])
@@ -32,15 +33,23 @@ def generateSweeps(subDirectoryName):
 
     parents.append(parentsInc)
     parents.append(parentsInt)
+    parents.append(parentsBool)
 
     parents = xm.chaining(parents)
+
+
     if sweepFile.doesItExist("link") == []:
 
         sweeps = []
         sweeps.append([[xm.truncate(minsInc[i] + n*inc[i]) for n in range(1 + int((maxsInc[i]-minsInc[i])/inc[i]))] for i in range(len(minsInc))])
         sweeps.append([[xm.truncate(minsInt[i] + n*((maxsInt[i]-minsInt[i])/inter[i])) for n in range(1 + int(inter[i]))] for i in range(len(minsInt))])
 
+        if len(parentsBool) != 0:
+            sweeps.append([['true','false']])
+
         combinations = xm.nestedLoops(xm.chaining(sweeps))
+
+        print(combinations)
 
         for i in range(len(combinations)):
             for j in range(len(parents)):
@@ -76,4 +85,4 @@ def generateSweeps(subDirectoryName):
             templateFile.writeToFile('{}/output{}{}.xml'.format(subDirectoryName, str(i),str(j)))
 """
 
-print(sweepFile.getType("paramA"))
+generateSweeps("what")
