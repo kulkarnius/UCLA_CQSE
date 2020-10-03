@@ -4,19 +4,28 @@
 
 <runParameters>
 <paramA value = 'default_value' type ='double'/>
-<paramB value = 'default_value' type ='bool'/>
+<paramB value = 'default_value' type ='double'/>
+<paramC value = 'default_value' type ='double'/>
 </runParameters>
 
 <parameterSweeps>
-
+<link>
 <paramA>
 <min value ='0.0'/>
 <max value ='1.0'/>
 <increment value = '0.2'/>
 </paramA>
 <paramB>
-<boolSweep/>
+<min value ='0.0'/>
+<max value ='1.0'/>
+<intervals value = '5'/>
 </paramB>
+</link>
+<paramC>
+<min value ='0.0'/>
+<max value ='1.0'/>
+<increment value = '0.2'/>
+</paramC>
 
 </parameterSweeps>
 
