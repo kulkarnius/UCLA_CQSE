@@ -23,6 +23,7 @@ def generateSweeps(subDirectoryName):
         parentsInc = sweepFile.getParent("increment") #Checking for both increments
         parentsInt = sweepFile.getParent("intervals") #And intervals
         parentsBool = sweepFile.getParent("boolSweep") #And boolean values
+        parentsString = sweepFile.getParent("stringSweep") #And strings
 
         minsInc = xm.chaining([sweepFile.getValues("{}//min".format(parentName)) for parentName in parentsInc])
         maxsInc = xm.chaining([sweepFile.getValues("{}//max".format(parentName)) for parentName in parentsInc])
@@ -35,6 +36,7 @@ def generateSweeps(subDirectoryName):
         parents.append(parentsInc)
         parents.append(parentsInt)
         parents.append(parentsBool)
+        parents.append(parentsString)
 
         parents = xm.chaining(parents)
 
@@ -45,6 +47,8 @@ def generateSweeps(subDirectoryName):
         if len(parentsBool) != 0:
             sweeps.append([['true','false']])
 
+        sweeps.append([sweepFile.getValueString("{}//string".format(parentName)) for parentName in parentsString])
+        
         combinations = xm.nestedLoops(xm.chaining(sweeps))
 
 
@@ -57,6 +61,7 @@ def generateSweeps(subDirectoryName):
         lparentsInc = sweepFile.getParent("link//increment") #Checking for both increments
         lparentsInt = sweepFile.getParent("link//intervals") #And intervals
         lparentsBool = sweepFile.getParent("link//boolSweep") #And boolean values
+        lparentsString = sweepFile.getParent("link//stringSweep") #And strings
 
         lminsInc = xm.chaining([sweepFile.getValues("{}//min".format(parentName)) for parentName in lparentsInc])
         lmaxsInc = xm.chaining([sweepFile.getValues("{}//max".format(parentName)) for parentName in lparentsInc])
@@ -66,9 +71,11 @@ def generateSweeps(subDirectoryName):
         lmaxsInt = xm.chaining([sweepFile.getValues("{}//max".format(parentName)) for parentName in lparentsInt])
         linter = xm.chaining([sweepFile.getValues("{}//intervals".format(parentName)) for parentName in lparentsInt])
 
+
         parents.append(lparentsInc)
         parents.append(lparentsInt)
         parents.append(lparentsBool)
+        parents.append(lparentsString)
 
         uLinkedParams = xm.getTags(sweepFile.getChilds("parameterSweeps"))
         uLinkedParams.remove("link")
@@ -76,6 +83,7 @@ def generateSweeps(subDirectoryName):
         parentsInc = []
         parentsInt = []
         parentsBool = []
+        parentsString = []
         
         for parent in uLinkedParams:
             if sweepFile.doesItExist("{}/increment".format(parent)) != []:
@@ -84,6 +92,9 @@ def generateSweeps(subDirectoryName):
                 parentsInt.append(parent)
             elif sweepFile.doesItExist("{}/boolSweep".format(parent)) != []:
                 parentsBool.append(parent)
+            elif sweepFile.doesItExist("{}/stringSweep".format(parent)) != []:
+                parentsString.append(parent)
+
 
 
         minsInc = xm.chaining([sweepFile.getValues("{}//min".format(parentName)) for parentName in parentsInc])
@@ -98,8 +109,10 @@ def generateSweeps(subDirectoryName):
         parents.append(parentsInc)
         parents.append(parentsInt)
         parents.append(parentsBool)
+        parents.append(parentsString)
 
         parents = xm.chaining(parents)
+
 
         lsweeps = []
         lsweeps.append([[xm.truncate(lminsInc[i] + n*linc[i]) for n in range(1 + int((lmaxsInc[i]-lminsInc[i])/linc[i]))] for i in range(len(lminsInc))])
@@ -108,12 +121,16 @@ def generateSweeps(subDirectoryName):
         if len(lparentsBool) != 0:
             lsweeps.append([['true','false']])
 
+        sweeps.append([sweepFile.getValueString("{}//string".format(parentName)) for parentName in lparentsString])   
+
         sweeps = []
         sweeps.append([[xm.truncate(minsInc[i] + n*inc[i]) for n in range(1 + int((maxsInc[i]-minsInc[i])/inc[i]))] for i in range(len(minsInc))])
         sweeps.append([[xm.truncate(minsInt[i] + n*((maxsInt[i]-minsInt[i])/inter[i])) for n in range(1 + int(inter[i]))] for i in range(len(minsInt))])
 
         if len(parentsBool) != 0:
             sweeps.append([['true','false']])
+        
+        sweeps.append([sweepFile.getValueString("{}//string".format(parentName)) for parentName in parentsString])
 
         ulcombinations = xm.nestedLoops(xm.chaining(sweeps))
         
@@ -131,4 +148,5 @@ def generateSweeps(subDirectoryName):
                 templateFile.setValue(parents[j],combinations[i][j])  #Need to add valid path checking to here at some point
             templateFile.writeToFile('{}/output{}{}.xml'.format(subDirectoryName, str(i),str(j)))
 
-generateSweeps("what")
+#generateSweeps("what")
+

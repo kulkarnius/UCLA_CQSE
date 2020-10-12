@@ -40,6 +40,10 @@ class xml_parser:
     def getValues(self,valueName):
         return [float(elem.get("value")) for elem in self.root.findall(".//{}".format(valueName))]
     
+    def getValueString(self,valueName):
+        return [elem.get("value") for elem in self.root.findall(".//{}".format(valueName))]
+    
+
     def setValue(self, targetValuePath, value):
         self.root.find('.//{}'.format(targetValuePath)).set('value', str(value))
 

@@ -4,27 +4,22 @@
 
 <runParameters>
 <paramA value = 'default_value' type ='double'/>
-<paramB value = 'default_value' type ='double'/>
-<paramC value = 'default_value' type ='double'/>
+<paramC value = 'default_value' type ='string'/>
 </runParameters>
 
 <parameterSweeps>
-<link>
 <paramA>
 <min value ='0.0'/>
 <max value ='1.0'/>
 <increment value = '0.2'/>
 </paramA>
-<paramB>
-<min value ='0.0'/>
-<max value ='1.0'/>
-<intervals value = '5'/>
-</paramB>
-</link>
+
 <paramC>
-<min value ='0.0'/>
-<max value ='1.0'/>
-<increment value = '0.2'/>
+<stringSweep>
+<string value = 'Hello'/>
+<string value = 'Bonjour'/>
+<string value = 'Guten Tag'/>
+</stringSweep>
 </paramC>
 
 </parameterSweeps>
